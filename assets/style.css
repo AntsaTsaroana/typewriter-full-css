@@ -1,0 +1,77 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --typewritingSpeed: 5s;
+  --typewritingCharacters: 30;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background-color: #121212;
+  font-family: monospace;
+  color: #f2f2f2;
+}
+
+h1 {
+  position: relative;
+  font-size: 3rem;
+  width: max-content;
+  margin-bottom: 50px;
+  font-weight: lighter;
+}
+
+h1::after,
+h1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+h1::before {
+  background: #121212;
+  animation: 
+  typewriter var(--typewritingSpeed) steps(var(--typewritingCharacters)) 1s forwards;
+}
+
+h1::after {
+  width: 0.125em;
+  background: #f2f2f2;
+  animation: 
+  typewriter var(--typewritingSpeed) steps(var(--typewritingCharacters)) 1s forwards,
+  blink_effect 750ms steps(var(--typewritingCharacters)) infinite;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink_effect {
+  to {
+    background: transparent;
+  }
+}
+
+p {
+  font-size: calc(1rem + 5px);
+  font-family: helvetica;
+  opacity: 0;
+  color: olivedrab;
+  transform: translateY(20px);
+  animation: show_subtitle 2s ease calc(var(--typewritingSpeed) + 2s) forwards;
+}
+
+@keyframes show_subtitle {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
